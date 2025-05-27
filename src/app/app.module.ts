@@ -23,12 +23,16 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTooltip} from "@angular/material/tooltip";
 import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-toggle";
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
+import { CardComponent } from './shared/card/card.component';
+import { GridComponent } from './shared/grid/grid.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    DetailComponent
+    DetailComponent,
+    CardComponent,
+    GridComponent
   ],
   imports: [
     BrowserModule,

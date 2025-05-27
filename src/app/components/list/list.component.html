@@ -19,6 +19,7 @@
   </section>
 
   <ng-container *ngIf="viewMode === 'table'">
+    <h2>Table</h2>
     <table mat-table [dataSource]="tableDataSource" class="mat-elevation-z8 character-table">
 
       <ng-container matColumnDef="id">
@@ -50,16 +51,15 @@
   </ng-container>
 
 
-  <ng-container>
-    <mat-grid-list cols="2" gutterSize="10px">
-      <mat-grid-tile class="card-grid" *ngFor="let character of characterList">
-        <mat-card class="animate__animated animate__bounce animate__fadeIn"
-                  [routerLink]="['/detail', character.id]">
-          <img [src]="character.image" alt="Image of {{ character.name }}" mat-card-image/>
+  <ng-container *ngIf="viewMode === 'cards'">
+    <mat-grid-list [cols]="gridColumns" rowHeight="350px" class="card-grid-list">
+      <mat-grid-tile *ngFor="let p of characterList" class="">
+        <mat-card [routerLink]="['/detail', p.id]" class="mat-elevation-z10">
+          <img [src]="p.image" alt="Image of {{ p.name }}" mat-card-image/>
           <mat-card-content>
-            <p><strong>Id:</strong> {{ character.id }}</p>
-            <p><strong>Name:</strong> {{ character.name }}</p>
-            <p><strong>Gender:</strong> {{ character.gender }}</p>
+            <p><strong>Id:</strong> {{ p.id }}</p>
+            <p><strong>Name:</strong> {{ p.name }}</p>
+            <p><strong>Gender:</strong> {{ p.gender }}</p>
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
