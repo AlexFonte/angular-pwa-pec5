@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
+import {CharacterDTO} from "../../models/character.interface";
 
 @Component({
   selector: 'app-grid',
@@ -8,8 +9,9 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 })
 export class GridComponent implements OnInit {
 
-  @Input() cardList: any[] = [];
+  @Input() cardList: CharacterDTO[] = [];
   gridColumns: number = 4; // Default number of columns
+
   constructor(private breakpointObserver: BreakpointObserver) {
     // Initial setup can be done here if needed
   }
@@ -29,6 +31,5 @@ export class GridComponent implements OnInit {
         this.gridColumns = 4;
       }
     });
-    }
-
+  }
 }

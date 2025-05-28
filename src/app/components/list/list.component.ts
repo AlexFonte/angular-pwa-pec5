@@ -65,6 +65,7 @@ export class ListComponent implements OnInit {
   }
 
   gotoDetail(character: CharacterDTO): void {
+    this.router.navigateByUrl(`/detail/${character.id}`);
     console.log(`The selected character is: ${JSON.stringify(character)}.`);
   }
 }

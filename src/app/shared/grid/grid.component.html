@@ -1,1 +1,5 @@
-<p>grid works!</p>
+<mat-grid-list [cols]="gridColumns" rowHeight="400px" class="grid-list">
+  <mat-grid-tile *ngFor="let character of cardList" class="">
+    <app-card [character]="character"></app-card>
+  </mat-grid-tile>
+</mat-grid-list>

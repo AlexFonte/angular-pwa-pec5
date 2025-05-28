@@ -18,7 +18,7 @@
 
   </section>
 
-  <ng-container *ngIf="viewMode === 'table'">
+  <ng-container *ngIf="viewMode === 'table'; else viewCards">
     <h2>Table</h2>
     <table mat-table [dataSource]="tableDataSource" class="mat-elevation-z8 character-table">
 
@@ -51,20 +51,9 @@
   </ng-container>
 
 
-  <ng-container *ngIf="viewMode === 'cards'">
-    <mat-grid-list [cols]="gridColumns" rowHeight="400px" class="card-grid-list">
-      <mat-grid-tile *ngFor="let p of characterList" class="">
-        <mat-card [routerLink]="['/detail', p.id]" class="mat-elevation-z10">
-          <img [src]="p.image" alt="Image of {{ p.name }}" mat-card-image class="mat-elevation-z10"/>
-          <mat-card-content>
-            <p><strong>Id:</strong> {{ p.id }}</p>
-            <p><strong>Name:</strong> {{ p.name }}</p>
-            <p><strong>Gender:</strong> {{ p.gender }}</p>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </ng-container>
+  <ng-template #viewCards>
+    <app-grid [cardList]="characterList" class="grid-container"></app-grid>
+  </ng-template>
 </div>
 
 
