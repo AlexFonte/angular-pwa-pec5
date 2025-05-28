@@ -52,10 +52,10 @@
 
 
   <ng-container *ngIf="viewMode === 'cards'">
-    <mat-grid-list [cols]="gridColumns" rowHeight="350px" class="card-grid-list">
+    <mat-grid-list [cols]="gridColumns" rowHeight="400px" class="card-grid-list">
       <mat-grid-tile *ngFor="let p of characterList" class="">
         <mat-card [routerLink]="['/detail', p.id]" class="mat-elevation-z10">
-          <img [src]="p.image" alt="Image of {{ p.name }}" mat-card-image/>
+          <img [src]="p.image" alt="Image of {{ p.name }}" mat-card-image class="mat-elevation-z10"/>
           <mat-card-content>
             <p><strong>Id:</strong> {{ p.id }}</p>
             <p><strong>Name:</strong> {{ p.name }}</p>
