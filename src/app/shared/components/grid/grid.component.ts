@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
-import {CharacterDTO} from "../../models/character.interface";
+import {CharacterDTO} from "../../../models/character.interface";
 
 @Component({
   selector: 'app-grid',

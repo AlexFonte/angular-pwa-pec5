@@ -1,10 +1,11 @@
 import {Component, Input} from '@angular/core';
-import {CharacterDTO} from "../../models/character.interface";
+import {CharacterDTO} from "../../../models/character.interface";
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
+
 })
 export class CardComponent {
 

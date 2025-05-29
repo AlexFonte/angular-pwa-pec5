@@ -19,8 +19,7 @@
   </section>
 
   <ng-container *ngIf="viewMode === 'table'; else viewCards">
-    <h2>Table</h2>
-    <table mat-table [dataSource]="tableDataSource" class="mat-elevation-z8 character-table">
+    <table mat-table [dataSource]="tableDataSource" class="mat-elevation-z8 character-table animate__animated animate__fadeIn">
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -52,7 +51,7 @@
 
 
   <ng-template #viewCards>
-    <app-grid [cardList]="characterList" class="grid-container"></app-grid>
+    <app-grid [cardList]="characterList" class="grid-container" [@cardAnimation]="characterList.length"></app-grid>
   </ng-template>
 </div>
 

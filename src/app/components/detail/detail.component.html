@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container animate__animated animate__fadeIn">
   <h1>Detalle del personage de Ryck y Morty</h1>
   <section class="btn-group">
     <button [routerLink]="'/'" mat-flat-button color="warn" class="mat-elevation-z3">
@@ -8,11 +8,25 @@
   </section>
 
   <ng-container *ngIf="character">
-    <mat-card class=" animate__animated animate__bounce animate_fadeIn">
-      <img [src]="character.image" alt="Character Image" class="character-image" />
+    <mat-card appearance="outlined" class="card animate__animated animate__zoomIn">
+      <img [src]="character.image" alt="Character Image" class="mat-elevation-z10 card-img" />
       <mat-card-content>
-        <h2>{{ character.name }}</h2>
-
+        <h2>Name: {{ character.name }}</h2>
+          <mat-accordion class="accordion">
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title class="accordion-title">{{!panelOpenState ? 'Show' : 'Hide'}} details
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p><strong>Gender:</strong> {{ character.gender }}</p>
+              <p><strong>Status:</strong> {{ character.status }}</p>
+              <p><strong>Species:</strong> {{ character.species }}</p>
+              <p><strong>Type:</strong> {{ character.type }}</p>
+              <p><strong>Create on:</strong> {{ character.created | formatDate: 2}}</p>
+              <p><strong>From:</strong> {{ character.location.name}}</p>
+              <p><strong>Nº of episodes appears:</strong> {{ character.episode.length}}</p>
+            </mat-expansion-panel>
+          </mat-accordion>
       </mat-card-content>
     </mat-card>
   </ng-container>

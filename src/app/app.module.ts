@@ -23,8 +23,16 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTooltip} from "@angular/material/tooltip";
 import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-toggle";
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
-import { CardComponent } from './shared/card/card.component';
-import { GridComponent } from './shared/grid/grid.component';
+import {CardComponent} from './shared/components/card/card.component';
+import {GridComponent} from './shared/components/grid/grid.component';
+import {MatChip} from "@angular/material/chips";
+import {
+  MatAccordion, MatExpansionModule,
+  MatExpansionPanel,
+  MatExpansionPanelDescription,
+  MatExpansionPanelTitle
+} from "@angular/material/expansion";
+import {FormatDatePipe} from "./shared/pipes/format-date.pipe";
 
 @NgModule({
   declarations: [
@@ -32,7 +40,8 @@ import { GridComponent } from './shared/grid/grid.component';
     ListComponent,
     DetailComponent,
     CardComponent,
-    GridComponent
+    GridComponent,
+    FormatDatePipe
   ],
   imports: [
     BrowserModule,
@@ -60,6 +69,12 @@ import { GridComponent } from './shared/grid/grid.component';
     MatButtonToggleGroup,
     MatGridList,
     MatGridTile,
+    MatChip,
+    MatAccordion,
+    MatExpansionModule,
+    MatExpansionPanel,
+    MatExpansionPanelTitle,
+    MatExpansionPanelDescription,
   ],
   providers: [
     provideAnimationsAsync()

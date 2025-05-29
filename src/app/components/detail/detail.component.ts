@@ -8,9 +8,9 @@ import {RickAndMortyService} from "../../services/rickandmorty.service";
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css'
 })
-export class DetailComponent implements OnInit
-{
+export class DetailComponent implements OnInit {
   character!: CharacterDTO;
+  panelOpenState: boolean = false;
 
   constructor(
     private rickAndMortyService : RickAndMortyService,
