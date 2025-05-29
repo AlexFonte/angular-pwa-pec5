@@ -23,6 +23,7 @@
               <p><strong>Species:</strong> {{ character.species }}</p>
               <p><strong>Type:</strong> {{ character.type }}</p>
               <p><strong>Create on:</strong> {{ character.created | formatDate: 2}}</p>
+              <p><strong>Origin:</strong> {{ character.origin.name}}</p>
               <p><strong>From:</strong> {{ character.location.name}}</p>
               <p><strong>Nº of episodes appears:</strong> {{ character.episode.length}}</p>
             </mat-expansion-panel>
