@@ -10,30 +10,33 @@ import {RickAndMortyService} from "../../services/rickandmorty.service";
 })
 export class DetailComponent implements OnInit {
   character!: CharacterDTO;
+  isLoading: boolean;
   panelOpenState: boolean = false;
 
-  constructor(
-    private rickAndMortyService : RickAndMortyService,
-    private activateRoute: ActivatedRoute,
-    private router: Router
-  ) {}
+  constructor(private rickAndMortyService: RickAndMortyService,
+              private activateRoute: ActivatedRoute,
+              private router: Router){
+    this.isLoading = false
+  }
 
   ngOnInit(): void {
+    this.isLoading = true;
     const identifier = this.activateRoute.snapshot.paramMap.get('id');
-    console.log(`Id: ${identifier}`);
 
     if (!identifier) {
       this.router.navigateByUrl('/');
       return;
     }
 
-    this.rickAndMortyService.getCharactersById(identifier).subscribe((character: CharacterDTO) => {
-      if (!character) {
-        this.router.navigateByUrl('/');
-        return;
-      }
-      this.character = character;
-      console.log('Image:', this.character);
-    });
+    setTimeout(() => {
+      this.rickAndMortyService.getCharactersById(identifier).subscribe((character: CharacterDTO) => {
+        if (!character) {
+          this.router.navigateByUrl('/');
+          return;
+        }
+        this.character = character;
+        this.isLoading = false;
+      });
+    }, 800);
   }
 }

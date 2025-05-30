@@ -1,7 +1,6 @@
-<mat-card [routerLink]="['/detail', character.id]" appearance="outlined" class="mat-elevation-z10 card" >
+<mat-card [routerLink]="['/detail', character.id]" appearance="outlined" class="card mat-elevation-z10" >
   <img [src]="character.image" alt="Image of {{ character.name }}" mat-card-image class="mat-elevation-z10 card-img"/>
   <mat-card-content class="card-content">
-    <p><strong>Id:</strong> {{ character.id }}</p>
     <p><strong>Name:</strong> {{ character.name }}</p>
     <p><strong>Gender:</strong> {{ character.gender }}</p>
   </mat-card-content>

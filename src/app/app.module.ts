@@ -33,6 +33,8 @@ import {
   MatExpansionPanelTitle
 } from "@angular/material/expansion";
 import {FormatDatePipe} from "./shared/pipes/format-date.pipe";
+import { SpinnerComponent } from './shared/spinner/spinner.component';
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import {FormatDatePipe} from "./shared/pipes/format-date.pipe";
     DetailComponent,
     CardComponent,
     GridComponent,
-    FormatDatePipe
+    FormatDatePipe,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +78,7 @@ import {FormatDatePipe} from "./shared/pipes/format-date.pipe";
     MatExpansionPanel,
     MatExpansionPanelTitle,
     MatExpansionPanelDescription,
+    MatProgressSpinner,
   ],
   providers: [
     provideAnimationsAsync()

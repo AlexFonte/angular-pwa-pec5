@@ -1,5 +1,5 @@
 <mat-grid-list [cols]="gridColumns" rowHeight="400px" class="grid-list animate__animated animate__fadeIn">
-  <mat-grid-tile *ngFor="let character of cardList" class="">
-    <app-card [character]="character"></app-card>
+  <mat-grid-tile *ngFor="let character of cardList">
+    <app-card [character]="character" ></app-card>
   </mat-grid-tile>
 </mat-grid-list>

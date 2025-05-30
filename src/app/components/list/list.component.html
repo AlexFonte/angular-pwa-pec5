@@ -14,11 +14,9 @@
             aria-label="Example mini fab with a heart icon">
       <mat-icon>view_list</mat-icon>
     </button>
-
-
   </section>
 
-  <ng-container *ngIf="viewMode === 'table'; else viewCards">
+  <ng-container *ngIf="!isLoading && viewMode === 'table'">
     <table mat-table [dataSource]="tableDataSource" class="mat-elevation-z8 character-table animate__animated animate__fadeIn">
 
       <ng-container matColumnDef="id">
@@ -49,10 +47,11 @@
     </table>
   </ng-container>
 
-
-  <ng-template #viewCards>
+  <ng-container *ngIf="!isLoading && viewMode === 'cards'">
     <app-grid [cardList]="characterList" class="grid-container" [@cardAnimation]="characterList.length"></app-grid>
-  </ng-template>
+  </ng-container>
+
+  <app-spinner *ngIf="isLoading"></app-spinner>
 </div>
 
 

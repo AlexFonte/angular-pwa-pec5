@@ -25,7 +25,7 @@ export class GridComponent implements OnInit {
     ]).subscribe(result => {
       if (result.breakpoints[Breakpoints.XSmall]) {
         this.gridColumns = 1;
-      } else if (result.breakpoints[Breakpoints.Medium]) {
+      } else if (result.breakpoints[Breakpoints.Medium]  || result.breakpoints[Breakpoints.Small]) {
         this.gridColumns = 2;
       } else {
         this.gridColumns = 4;

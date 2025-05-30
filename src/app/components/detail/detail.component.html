@@ -7,7 +7,7 @@
     </button>
   </section>
 
-  <ng-container *ngIf="character">
+  <ng-container *ngIf="!isLoading; else loading">
     <mat-card appearance="outlined" class="card animate__animated animate__zoomIn">
       <img [src]="character.image" alt="Character Image" class="mat-elevation-z10 card-img" />
       <mat-card-content>
@@ -31,5 +31,9 @@
       </mat-card-content>
     </mat-card>
   </ng-container>
+
+  <ng-template #loading>
+    <app-spinner *ngIf="isLoading"></app-spinner>
+  </ng-template>
 
 </div>

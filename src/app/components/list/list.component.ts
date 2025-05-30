@@ -4,7 +4,6 @@ import {RickAndMortyService} from "../../services/rickandmorty.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {CharacterListDTO} from "../../models/character-list.interface";
 import {CharacterDTO} from "../../models/character.interface";
-import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {animate, query, stagger, style, transition, trigger} from "@angular/animations";
 
 @Component({
@@ -17,15 +16,15 @@ import {animate, query, stagger, style, transition, trigger} from "@angular/anim
         query(
           ':enter',
           [
-            style({ opacity: 0, transform: 'translateY(20px)' }),
+            style({opacity: 0, transform: 'translateY(20px)'}),
             stagger('200ms', [
               animate(
                 '600ms ease-in-out',
-                style({ opacity: 1, transform: 'translateY(0)' })
+                style({opacity: 1, transform: 'translateY(0)'})
               ),
             ]),
           ],
-          { optional: true }
+          {optional: true}
         ),
       ]),
     ]),
@@ -37,51 +36,38 @@ export class ListComponent implements OnInit {
   tableDataSource: MatTableDataSource<CharacterDTO>;
   characterList!: CharacterDTO[];
 
-  isLoading: boolean = true;
+  isLoading: boolean;
   viewMode: 'cards' | 'table' = 'cards';
-  gridColumns: number = 4;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
-              private characterService: RickAndMortyService,
-              private breakpointObserver: BreakpointObserver) {
-
+              private characterService: RickAndMortyService) {
+    this.isLoading = false;
     this.tableDataSource = new MatTableDataSource<CharacterDTO>([]);
     this.characterList = [];
   }
 
   ngOnInit(): void {
     this.isLoading = true;
-
-    this.characterService
-      .getAllCharacters()
-      .subscribe((characters: CharacterListDTO) => {
-        this.characterList = characters.results;
-        this.tableDataSource = new MatTableDataSource<CharacterDTO>(characters.results);
-        this.isLoading = false;
-        // console.log('ListComponent initialized', JSON.stringify(this.characterList));
-      });
-
-
-    this.breakpointObserver.observe([
-      Breakpoints.XSmall,
-      Breakpoints.Small,
-      Breakpoints.Medium,
-      Breakpoints.Large
-    ]).subscribe(result => {
-      if (result.breakpoints[Breakpoints.XSmall]|| result.breakpoints[Breakpoints.Small]) {
-        this.gridColumns = 1;
-      } else if (result.breakpoints[Breakpoints.Medium]) {
-        this.gridColumns = 2;
-      } else {
-        this.gridColumns = 4;
-      }
-    });
+    setTimeout(() => {
+      this.characterService
+        .getAllCharacters()
+        .subscribe((characters: CharacterListDTO) => {
+          this.characterList = characters.results;
+          this.tableDataSource = new MatTableDataSource<CharacterDTO>(characters.results);
+          this.isLoading = false;
+          // console.log('ListComponent initialized', JSON.stringify(this.characterList));
+        });
+    }, 300);
   }
 
   changeModeView(mode: 'cards' | 'table'): void {
-    this.viewMode = mode;
-    console.log(`Mode changed to: ${this.viewMode}`);
+
+    this.isLoading = true;
+    setTimeout(() => {
+      this.viewMode = mode;
+      this.isLoading = false;
+    }, 300);
   }
 
   gotoDetail(character: CharacterDTO): void {
