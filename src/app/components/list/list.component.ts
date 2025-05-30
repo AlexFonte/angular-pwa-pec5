@@ -32,7 +32,7 @@ import {animate, query, stagger, style, transition, trigger} from "@angular/anim
 })
 export class ListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'image', 'name', 'status'];
+  displayedColumns: string[] = ['image', 'name', 'status'];
   tableDataSource: MatTableDataSource<CharacterDTO>;
   characterList!: CharacterDTO[];
 
