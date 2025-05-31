@@ -30,7 +30,7 @@
   "dataGroups": [
     {
       "name": "rickandmorty-api",
-      "urls": ["https://rickandmortyapi.com/api/**"],
+      "urls": ["https://rickandmortyapi.com/api/character/**"],
       "cacheConfig": {
         "maxSize": 20,
         "maxAge": "1d",
